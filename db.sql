@@ -26,4 +26,4 @@ CREATE TABLE tasks (
 );
 
 INSERT INTO tasks ( item_number, location_number, project, description, priority, requestor, assigned_to, due_date, notes )
-VALUES ('1', '111', 'project', 'description', 'high priority', 'mike', 'mike', '10-10-2017', 'notes');
+VALUES ('1', '111', 'project', 'description', 'high', 'mike', 'mike', '10-10-2017', 'notes');
