@@ -50,6 +50,36 @@ router.route('/users')
     })
   })
   
+router.route('/tasks')
+  .post(function(req, res, next){
+    db.none('insert into tasks(item_number, location_number, project, description, priority, requestor, assigned_to, due_date, notes)' + 'values(${item_number}, ${location_number}, ${project}, ${description}, ${priority}, ${requestor}, ${assigned_to}, ${due_date}, ${notes})', req.body)
+    .then(function(){
+      res.status(200)
+        .json({
+          status: 'success',
+          message: 'Inserted ONE task'
+        });
+    })
+    .catch(function(err){
+      return next(err);
+    });
+  })
+  
+  .get(function(req, res, next){
+    db.any('select * from tasks')
+    .then(function(data){
+      res.status(200)
+        .json({
+          status: 'success',
+          data: data,
+          message: 'Retrieved ALL tasks'
+        });
+    })
+    .catch(function(err){
+      return next(err)
+    })
+  })
+  
 app.use('/api', router);
 
 var server = app.listen(8000, function(){
