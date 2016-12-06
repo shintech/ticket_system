@@ -1,20 +1,20 @@
 var Backbone = require("backbone");
 var Marionette = require('marionette');
 
-var Users = require("./collections/Users");
-var Tasks = require("./collections/Tasks")
-
-var TasksView = require("./views/TasksView");
-var TableView = require("./views/TableView");
-
+var Tasks = require("./collections/Tasks");
+var PageView = require("./views/PageView");
 var style = require("./public/css/style.scss");
 
-var users = new Users;
 var tasks = new Tasks;
 tasks.fetch();
 
-var tableView = new TableView({
+var pageView = new PageView({
   collection: tasks
 });
 
-$('body').html(tableView.render().el);
+var ticketManager = new Marionette.Application({
+  region: 'body'
+});
+
+ticketManager.start();
+ticketManager.showView(pageView);

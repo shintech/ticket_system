@@ -12,10 +12,6 @@ var TableView = Backbone.Marionette.View.extend({
     body: {
       el: 'tbody',
       replaceElement: true
-    },
-    main: {
-      el: '.panel-body',
-      replaceElement: true
     }
   },
   onRender: function(){

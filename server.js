@@ -46,9 +46,9 @@ router.route('/users')
         });
     })
     .catch(function(err){
-      return next(err)
-    })
-  })
+      return next(err);
+    });
+  });
   
 router.route('/tasks')
   .post(function(req, res, next){
@@ -68,17 +68,12 @@ router.route('/tasks')
   .get(function(req, res, next){
     db.any('select * from tasks')
     .then(function(data){
-      res.status(200)
-        .json({
-          status: 'success',
-          data: data,
-          message: 'Retrieved ALL tasks'
-        });
+      res.json(data);
     })
     .catch(function(err){
-      return next(err)
-    })
-  })
+      return next(err);
+    });
+  });
   
 app.use('/api', router);
 
