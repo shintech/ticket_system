@@ -3,6 +3,7 @@ var Marionette = require('marionette');
 
 var Tasks = require("./collections/Tasks");
 var PageView = require("./views/PageView");
+
 var style = require("./public/css/style.scss");
 
 var tasks = new Tasks;
