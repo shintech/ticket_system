@@ -11,7 +11,10 @@ var PageView = Backbone.Marionette.View.extend({
     }
   },
   events: {
-    'click .submit-button': 'submitForm'
+    'mouseover .table-row': 'mouseoverFunc',
+    'mouseout .table-row': 'mouseoutFunc',
+    'click .submit-button': 'submitForm',
+    'click .table-row': 'tableClick'
   },
   onRender: function(){
     this.showChildView('main', new TableView({
@@ -36,6 +39,15 @@ var PageView = Backbone.Marionette.View.extend({
     task.save();
     this.collection.add(task);
     this.render();
+  },
+  mouseoverFunc: function(event){
+    $(event.currentTarget).css({"background-color":"rgb(255, 255, 117)","cursor":"pointer"});
+  },
+  mouseoutFunc: function(event){
+    $(event.currentTarget).css("background-color", "");
+  },
+  tableClick: function(){
+    console.log('table row clicked')
   }
 });
 
