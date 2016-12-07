@@ -6,7 +6,7 @@ var PageView = require("./views/PageView");
 
 var style = require("./public/css/style.scss");
 
-var tasks = new Tasks;
+var tasks = new Tasks();
 
 var pageView = new PageView({
   collection: tasks

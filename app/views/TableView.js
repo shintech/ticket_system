@@ -21,8 +21,7 @@ var TableView = Backbone.Marionette.View.extend({
     }));
   },
   initialize: function(){
-    // this.collection.bind('reset', this.render, this)
-    this.collection.fetch()
+    this.collection.fetch();
   },
   mouseoverFunc: function(event){
     $(event.currentTarget).css({"background-color":"lightgrey","cursor":"pointer"});

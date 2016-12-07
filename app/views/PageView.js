@@ -1,4 +1,4 @@
-var Task = require("../models/Task")
+var Task = require("../models/Task");
 var TableView = require("./TableView");
 
 var PageView = Backbone.Marionette.View.extend({
@@ -12,9 +12,6 @@ var PageView = Backbone.Marionette.View.extend({
   },
   events: {
     'click .submit-button': 'submitForm'
-  },
-  initialize: function(){
-    this.listenTo(this.collection, 'add', this.render)
   },
   onRender: function(){
     this.showChildView('main', new TableView({
@@ -38,6 +35,7 @@ var PageView = Backbone.Marionette.View.extend({
     task.set(taskAttrs);
     task.save();
     this.collection.add(task);
+    this.render();
   }
 });
 
