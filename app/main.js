@@ -14,7 +14,7 @@ var pageView = new PageView({
 });
 
 var ticketManager = new Marionette.Application({
-  region: 'body'
+  region: '#main'
 });
 
 ticketManager.start();
