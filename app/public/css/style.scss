@@ -7,7 +7,9 @@ table {
 }
 
 .table-header {
-  background-color: rgb(231, 231, 230)
+  background-color: rgb(231, 231, 230);
+    text-align: center;
+
 }
 
 #new-task {
@@ -16,9 +18,9 @@ table {
   margin-right: 5px;
 }
 
-.radio {
-   float: left;
- }
+// .radio {
+//   float: left;
+// }
 #loader {
   position:absolute;
   left:50%;
