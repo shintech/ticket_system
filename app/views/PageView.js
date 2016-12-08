@@ -35,7 +35,11 @@ var PageView = Backbone.Marionette.View.extend({
       notes: $('#notes_input').val()
     };
     task.set(taskAttrs);
-    task.save();
+    task.save(null, {
+      success: function(model, response){
+        console.log(response.message)
+      }
+    });
     this.collection.add(task);
     this.render();
     if ($('.modal-backdrop').length){

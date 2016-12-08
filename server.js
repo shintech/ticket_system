@@ -75,6 +75,21 @@ router.route('/tasks')
     });
   });
   
+router.route('/tasks/:id')
+  .put(function(req, res, next){
+    db.none('update tasks set completed=$1 where id=$2', [req.body.completed, parseInt(req.params.id)])
+      .then(function(){
+        res.status(200)
+          .json({
+            status: 'success',
+            message: 'updated Task'
+          });
+      })
+      .catch(function(err){
+        return next(err)
+      });
+  })
+  
 app.use('/api', router);
 
 var server = app.listen(8000, function(){
