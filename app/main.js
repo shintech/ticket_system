@@ -1,3 +1,4 @@
+global.jQuery = require('jquery');
 var Backbone = require("backbone");
 var Marionette = require('marionette');
 

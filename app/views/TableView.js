@@ -1,13 +1,19 @@
 var TasksView = require("./TasksView");
+var TaskModalView = require("./TaskModalView");
 
 var TableView = Backbone.Marionette.View.extend({
   tagName: 'div',
   className: 'panel panel-default',
   template: require("../templates/table-template.html"),
+  ui: {
+    tableRowClicker: '.table-row'
+  },
   events: {
     'mouseover .table-header': 'mouseoverFunc',
     'mouseout .table-header': 'mouseoutFunc',
-    'change input[type=radio]': 'changedRadio'
+    'change input[type=radio]': 'changedRadio',
+    'click @ui.tableRowClicker': 'handleClick'
+
   },
   regions: {
     body: {
@@ -34,7 +40,12 @@ var TableView = Backbone.Marionette.View.extend({
       collection: this.collection,
       active_flag: e.currentTarget.value
     }));
-  }
+  },
+  handleClick: function(e){
+    var id = $(e.currentTarget).data("id");
+    var task = this.collection.get(id);
+    var taskModal = new TaskModalView({ model: task });
+  },
 });
 
 module.exports = TableView;
