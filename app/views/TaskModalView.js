@@ -1,6 +1,3 @@
-// global.jQuery = require('jquery');
-require('bootstrap');
-
 var TaskModalView = Backbone.Marionette.View.extend({
   tagName: 'div',
   className: 'modal fade',
