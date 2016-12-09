@@ -51,7 +51,6 @@ var TableView = Backbone.Marionette.View.extend({
   },
   sortCollection: function(flag){
     var name = flag.target.id;
-    console.log(this.fullCollection)
     if (this.sortFlag === false){
       this.sortFlag = true;
       this.collection.setSorting(name, -1)

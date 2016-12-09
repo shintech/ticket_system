@@ -26,9 +26,9 @@ var PageView = Backbone.Marionette.View.extend({
     var taskAttrs = {
       item_number: $('#item_number_input').val(),
       location_number: $('#location_number_input').val(),
-      project: $('#project_input').val(),
+      project: $('[name="project-radio"]:radio:checked').val(),
       description: $('#description_input').val(),
-      priority: $('#priority_input').val(),
+      priority: $('[name="priority-radio"]:radio:checked').val(),
       requestor: $('#requestor_input').val(),
       assigned_to: $('#assigned_to_input').val(),
       due_date: $('#due_date_input').val(),
