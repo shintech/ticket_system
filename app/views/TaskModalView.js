@@ -11,13 +11,14 @@ var TaskModalView = Backbone.Marionette.View.extend({
     'click': 'remove'
   },
   initialize: function(){
-        // console.log(this.model)
-
     this.render();
-    
   },
   onRender: function(){
     this.$el.modal('show')
+    var footer = this.el.lastElementChild.lastElementChild.lastElementChild
+    if (this.options.model.attributes.completed == false){
+     $(footer).prepend('<button type="button" class="complete-button btn btn-default" data-dismiss="modal">Complete</button>')
+    }
   },
   remove: function(){
     this.on('hidden', this.$el.remove())
@@ -25,14 +26,15 @@ var TaskModalView = Backbone.Marionette.View.extend({
       $('.modal-backdrop').remove()
     }
   },
-  complete: function(req, res){
-    // e.preventDefault();
+  complete: function(e){
+    e.preventDefault();
     this.model.set('completed', true)
     this.model.save(null, {
       success: function(model, response){
         console.log(response.message)
       }
     })
+    Backbone.trigger('task:complete')
   }
 });
 
